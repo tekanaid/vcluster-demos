@@ -1,0 +1,79 @@
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: helm.crossplane.io/v1beta1
+kind: Release
+metadata:
+  annotations:
+    crossplane.io/composition-resource-name: cilium
+    crossplane.io/external-create-failed: "2024-05-07T18:03:11Z"
+    crossplane.io/external-create-pending: "2024-05-07T18:03:23Z"
+    crossplane.io/external-create-succeeded: "2024-05-07T18:03:32Z"
+    crossplane.io/external-name: samgke-cilium
+  creationTimestamp: "2024-05-07T17:48:26Z"
+  generateName: samgke-lsdgp-
+  generation: 4
+  labels:
+    crossplane.io/claim-name: samgke
+    crossplane.io/claim-namespace: samgke
+    crossplane.io/composite: samgke-lsdgp
+  name: samgke-cilium
+  ownerReferences:
+  - apiVersion: devopstoolkitseries.com/v1alpha1
+    blockOwnerDeletion: true
+    controller: true
+    kind: CompositeCluster
+    name: samgke-lsdgp
+    uid: 962f1232-c47a-4888-b263-8f68988e3521
+  resourceVersion: "1087213"
+  uid: 7e5aef42-a502-4fa4-a369-2b1b7121b0ba
+spec:
+  deletionPolicy: Delete
+  forProvider:
+    chart:
+      name: cilium
+      pullSecretRef:
+        name: ""
+        namespace: ""
+      repository: https://helm.cilium.io
+      version: 1.14.2
+    namespace: kube-system
+    set:
+    - name: nodeinit.enabled
+      value: "true"
+    - name: nodeinit.reconfigureKubelet
+      value: "true"
+    - name: nodeinit.removeCbrBridge
+      value: "true"
+    - name: cni.binPath
+      value: /home/kubernetes/bin
+    - name: gke.enabled
+      value: "true"
+    - name: ipam.mode
+      value: kubernetes
+    - name: ipv4NativeRoutingCIDR
+    - name: authentication.mutual.spire.enabled
+      value: "true"
+    - name: authentication.mutual.spire.install.enabled
+      value: "true"
+  providerConfigRef:
+    name: samgke
+  rollbackLimit: 3
+status:
+  atProvider:
+    releaseDescription: Install complete
+    revision: 1
+    state: deployed
+  conditions:
+  - lastTransitionTime: "2024-05-07T19:00:28Z"
+    message: 'connect failed: cannot create new rest config using provider secret:
+      currentContext not set in kubeconfig'
+    reason: ReconcileError
+    status: "False"
+    type: Synced
+  - lastTransitionTime: "2024-05-07T18:03:33Z"
+    reason: Available
+    status: "True"
+    type: Ready
+  synced: true

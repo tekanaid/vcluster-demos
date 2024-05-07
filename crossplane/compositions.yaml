@@ -1168,7 +1168,7 @@ spec:
                   - autoRepair: true
                     autoUpgrade: true
               initialNodeCount: 1
-              location: us-east1
+              location: us-central1
               removeDefaultNodePool: true
         connectionDetails:
         - fromConnectionSecretKey: kubeconfig
@@ -1220,15 +1220,16 @@ spec:
                 - effect: NO_EXECUTE
                   key: node.cilium.io/agent-not-ready
                   value: "true"
+                diskSizeGb: 50
                 guestAccelerator:
-                - type: "nvidia-tesla-t4"
-                  count: 1
-                gpuDriverInstallationConfig:
-                - gpuDriverVersion: "LATEST"
+                  - type: "nvidia-tesla-t4"
+                    count: 1
+                    gpuDriverInstallationConfig:
+                      - gpuDriverVersion: "LATEST"
               nodeLocations:
-              - us-east1-b
-              - us-east1-c
-              - us-east1-d
+              - us-central1-a
+              - us-central1-b
+              - us-central1-c
         name: nodepool
         patches:
         - fromFieldPath: spec.id
@@ -1243,9 +1244,9 @@ spec:
           toFieldPath: spec.forProvider.nodeConfig[0].machineType
           transforms:
           - map:
-              large: n1-standard-16
-              medium: n1-standard-4
-              small: n1-standard-2
+              large: g2-standard-12
+              medium: g2-standard-8
+              small: g2-standard-4
             type: map
         - fromFieldPath: status.message
           toFieldPath: status.nodePoolStatus
