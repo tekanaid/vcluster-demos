@@ -1228,7 +1228,7 @@ spec:
                       - gpuDriverVersion: "LATEST"
               nodeLocations:
               - us-east4-a
-              - us-east4-b
+              - us-east1-d
               - us-east4-c
         name: nodepool
         patches:
