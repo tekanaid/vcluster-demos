@@ -1168,7 +1168,7 @@ spec:
                   - autoRepair: true
                     autoUpgrade: true
               initialNodeCount: 1
-              location: us-central1
+              location: us-east4
               removeDefaultNodePool: true
         connectionDetails:
         - fromConnectionSecretKey: kubeconfig
@@ -1227,9 +1227,9 @@ spec:
                     gpuDriverInstallationConfig:
                       - gpuDriverVersion: "LATEST"
               nodeLocations:
-              - us-central1-a
-              - us-central1-b
-              - us-central1-c
+              - us-east4-a
+              - us-east4-b
+              - us-east4-c
         name: nodepool
         patches:
         - fromFieldPath: spec.id
