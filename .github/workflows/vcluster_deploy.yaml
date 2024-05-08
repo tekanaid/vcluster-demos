@@ -127,7 +127,7 @@ jobs:
         elif [ "${{ github.event.inputs.hostClusterType }}" = "gke" ]; then
           echo "Configuring GCP GKE..."
           gcloud components install gke-gcloud-auth-plugin
-          gcloud container clusters get-credentials ${{ github.event.inputs.hostGKEClusterName }} --region us-east1 --project ${{ github.event.inputs.hostGKEprojectName }}
+          gcloud container clusters get-credentials ${{ github.event.inputs.hostGKEClusterName }} --region us-east4 --project ${{ github.event.inputs.hostGKEprojectName }}
         elif [ "${{ github.event.inputs.hostClusterType }}" = "aks" ]; then
           echo "Configuring Azure AKS..."
           # Add commands to configure AKS kubeconfig here
