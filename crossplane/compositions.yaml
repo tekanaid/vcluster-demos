@@ -1222,7 +1222,7 @@ spec:
                   value: "true"
                 diskSizeGb: 50
                 guestAccelerator:
-                  - type: "nvidia-tesla-t4"
+                  - type: "nvidia-l4"
                     count: 1
                     gpuDriverInstallationConfig:
                       - gpuDriverVersion: "LATEST"
